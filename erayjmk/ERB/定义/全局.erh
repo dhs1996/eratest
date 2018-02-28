@@ -1,0 +1,36 @@
+﻿
+
+;#########物品系统#########
+#DIM ITEM_INFO,3000,6
+;选中的物品ID
+#DIM BUTTON_ITEM
+;背包每页显示数量
+#DIM LIST_SHOW_NUM
+#DIMS ISTR,3000,3
+#DIMS BASE_NAME,100
+
+;#########其他系统#########
+#DIMS REST_SELECT,5
+
+
+
+
+
+
+;#########存档内容#########
+
+;存档额外内容的格式:#DIMS SAVEDATA 变量
+
+;游戏天数记录(1年2月3日4具体时间)
+#DIM SAVEDATA TIME_PLAYER,5
+;当前所在地图记录
+#DIMS SAVEDATA MAPNAME,100
+
+;背包情况
+#DIM SAVEDATA PACK_USE,213,4
+;最大背包格子
+#DIM SAVEDATA PACK_MAX
+;背包已使用数
+#DIM SAVEDATA PACK_USED
+;记录装备信息
+#DIM SAVEDATA ITEM_BASE,213,11

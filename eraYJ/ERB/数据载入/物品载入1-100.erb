@@ -1,0 +1,68 @@
+﻿;物品载入
+;具体参数作用
+;ITEM_ID 物品ID
+;ARGS    物品名
+;ARG:0	 装备等级
+;ARG:1	 攻击力
+;ARG:2	 防御力
+;ARG:3	 力量
+;ARG:4	 敏捷
+;ARG:5	 智力
+;ARG:6	 其他
+;ARG:7	 其他
+;ARG:8	 其他
+;ARG:10	 1.头盔,2.项链,3.披风,4.盔甲,5.武器,6.腰带,7.戒指,8.护腕,9.靴子,10.挂件
+;ARG:20	 价格
+;ARG:9   武器单双手 1为单,2为双
+@ITEM_LOAD,ITEM_ID,ARGS,ARG:0,ARG:10,ARG:1,ARG:2,ARG:3,ARG:4,ARG:5,ARG:6,ARG:7,ARG:8,ARG:20,ARG:9
+;物品信息
+ITEM_NAME:ITEM_ID =%ARGS%			
+ITEM_INFO:ITEM_ID:0 = ARG:0			;物品等级载入
+FOR LOCAL,1,11						;基础属性载入
+	SELECTCASE ARG:LOCAL
+		CASE 0
+			ITEM_INFO:ITEM_ID:LOCAL = 0
+		CASE 1 TO 10
+			;装备属性信息载入
+			ITEM_INFO:ITEM_ID:LOCAL = ARG:LOCAL
+		CASEELSE
+	ENDSELECT
+NEXT
+ITEM_INFO:ITEM_ID:20 = ARG:20
+
+
+
+
+
+
+@ITEM_FIRSTLOAD			;初始化装备载入,放在标题页面.ERB中的@EVENTFIRST里
+ITEM_OWN:0:0 = 0		;初始化物品总数量为0
+PACK_ID = 0				;初始化当前使用背包ID为0
+ISTR:1 =攻击
+ISTR:2 =防御
+ISTR:3 =力量
+ISTR:4 =敏捷
+ISTR:5 =智力
+;ISTR:6 =
+;ISTR:7 =
+;ISTR:8 =
+;ARG:10	 1.头盔,2.项链,3.披风,4.盔甲,5.武器,6.腰带,7.戒指,8.护腕,9.靴子,10.挂件
+;			ITEM_ID ARGS			ARG:0	ARG:10	ARG:1	ARG:2	ARG:3	ARG:4	ARG:5	ARG:6	ARG:7	ARG:8	ARG:20	ARG:9
+;ID:0为空   	ID	名字			等级	类型	攻击	防御	力量	敏捷	智力							价格	武器单双手
+CALL ITEM_LOAD,	0,	"",				0,		0,		0,		0,		0,		0,		0,		0,		0,		0,		0,		0
+CALL ITEM_LOAD,	1,	"小树枝",		1,		10,		0,		0,		1,		1,		1,		0,		0,		0,		59,		0
+CALL ITEM_LOAD,	2,	"木剑",			1,		5,		1,		0,		0,		0,		0,		0,		0,		0,		100,	0
+CALL ITEM_LOAD,	3,	"休闲装",		1,		4,		0,		1,		0,		0,		0,		0,		0,		0,		100,	0
+
+
+
+
+
+
+
+
+
+
+
+
+

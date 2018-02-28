@@ -1,0 +1,59 @@
+﻿@BASE_PC_UPDATE
+;FLAG存储最终计算后数值
+
+;5力量,6敏捷,7智力
+FLAG:5 = BASE:5
+FLAG:6 = BASE:6
+FLAG:7 = BASE:7
+;装备附加
+FLAG:5 += BASE_EQUIP_ADD("力量")
+FLAG:6 += BASE_EQUIP_ADD("敏捷")
+FLAG:7 += BASE_EQUIP_ADD("智力")
+
+;8攻击下限,9攻击上限
+FLAG:8 = ((FLAG:5)/10 + (FLAG:6)/5 + (BASE:2)/6) + BASE:8
+FLAG:9 = ((FLAG:5)/3 + (FLAG:6)/4 + (BASE:2)/6) + BASE:9
+;装备附加
+FLAG:8 += BASE_EQUIP_ADD("攻击")
+FLAG:9 += BASE_EQUIP_ADD("攻击")
+
+;10护甲
+FLAG:10 = (((FLAG:5) + (FLAG:6)*3)/3 + (BASE:10) + (BASE:2)/2)*((BASE:19)*10)/100
+;装备附加
+FLAG:10 += BASE_EQUIP_ADD("护甲")
+
+;30减伤
+FLAG:30 = (100*(FLAG:10)/(233+(FLAG:10)))
+
+
+
+;最大12血13蓝14体(直接按最终值算)
+FLAG:12 = (FLAG:5)*(BASE:20) + (FLAG:6)*(BASE:20)/2 + (BASE:2)*(BASE:25) + BASE:12
+FLAG:13 = (FLAG:7)*(BASE:20) + (BASE:2)*(BASE:26) + BASE:13
+FLAG:14 = ((BASE:5)+(BASE:6)*4)*(BASE:22)/16 + BASE:14
+
+
+
+;装备属性附加
+@BASE_EQUIP_ADD(ARGS)
+#FUNCTION
+#DIM ADD
+#DIM SUM
+SUM = 0
+SELECTCASE ARGS
+	CASE "力量"
+		ADD = 1
+	CASE "敏捷"
+		ADD = 2
+	CASE "智力"
+		ADD = 3
+	CASE "攻击"
+		ADD = 4
+	CASE "护甲"
+		ADD = 5
+	CASEELSE
+ENDSELECT
+FOR LOCAL,1,13
+	SUM += ITEM_BASE:(EQUIP:LOCAL):ADD
+NEXT
+RETURNF SUM

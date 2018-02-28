@@ -1,0 +1,121 @@
+﻿
+;物品名以及介绍
+;					id ,物品名,物品介绍
+@ADDITEM_INTRODUCE,LOCAL,ARGS:0	,ARGS:1
+LIST_SHOW_NUM = 20
+ISTR:LOCAL:0 =%ARGS:0%
+ISTR:LOCAL:1 =%ARGS:1%
+
+;物品属性
+;arg:0具体数值含义(装备部位):  1头盔,2脖子,3背部,4身体,5手,6戒指,7手套,8鞋子,9携带品,10道具,11其他
+;arg:1具体数值含义(物品类型): (1-3为装备)1布甲,2皮甲,3重甲
+;							(4饰品)4饰品,
+;							(5-20为近战武器)5匕首,6短剑,7长剑,8大剑,9斧头,10弯刀,11斩马刀,12镰刀,13长枪,20板砖
+;							(21-30为远程武器)21弓,22弩,23枪
+;							40消耗类,41特殊,
+;arg:3具体数值含义(物品品质):1垃圾,2普通,3精良,4极品,5史诗,6传奇,7半神器,8神器
+;					9主神器,10后天灵宝,11先天灵宝,12混沌灵宝
+;			    id   部位 	类型  等级  品质  价格  
+@ADDITEM_INFO,ARG:5,ARG:0,ARG:1,ARG:2,ARG:3,ARG:4
+
+FOR LOCAL,0,5
+	ITEM_INFO:(ARG:5):LOCAL = ARG:LOCAL
+NEXT
+
+
+
+
+
+@LOAD_ITEM_INFO
+PRINT 载入物品中
+TWAIT 100,1
+CLEARLINE 1
+;ITEM_BASE相关参数:1力量,2敏捷,3智力,4攻击,5护甲,6攻速
+BASE_NAME:1 = 力量
+BASE_NAME:2 = 敏捷
+BASE_NAME:3 = 智力
+BASE_NAME:4 = 攻击
+BASE_NAME:5 = 护甲
+BASE_NAME:6 = 攻速
+
+;id为0为无物品
+CALL ADDITEM_INTRODUCE,0,"",""
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,O		,0		,0		,0		,0		,0		
+
+;测试用
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INTRODUCE,1,"滑稽","来自异世界未知意念聚集形成的神器"
+CALL ADDITEM_INFO,1		,9		,41		,1		,8		,0		
+
+
+;id为101-300为头盔(部位1)
+CALL ADDITEM_INTRODUCE,101,"新手之盔",""
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,101	,1		,1		,1		,1		,1			
+
+
+;id为301-500为脖子(部位2)
+
+
+
+
+;id为501-700为披风(部位3)
+CALL ADDITEM_INTRODUCE,501,"新手披风",""
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,501	,3		,1		,1		,1		,1		
+
+
+
+;id为701-900为身体(部位4)
+CALL ADDITEM_INTRODUCE,701,"新手战甲",""
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,701	,4		,1		,1		,1		,1		
+
+
+;id为901-1100为武器(部位5)
+CALL ADDITEM_INTRODUCE,901,"新手之剑",""
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,901	,5		,7		,1		,1		,1		
+
+
+
+;id为1101-1300为戒指(部位6)
+	
+
+
+
+;id为1301-1500为手套(部位7)
+CALL ADDITEM_INTRODUCE,1301,"新手手套",""
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,1301	,7		,1		,1		,1		,1		
+
+
+
+;id为1501-1700为鞋子(部位8)
+CALL ADDITEM_INTRODUCE,1501,"新手之靴",""
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,1501	,8		,1		,1		,1		,1		
+
+
+
+;id为1701-1900为携带品(部位9)
+CALL ADDITEM_INTRODUCE,1701,"小树枝",""
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,1701	,9		,4		,1		,4		,0		
+
+
+
+;id为1901-2100为消耗品(10)
+CALL ADDITEM_INTRODUCE,1901,"馒头","能恢复少量HP的食物"
+;			   	id  	 部位  	类型	等级  	品质  	价格  	
+CALL ADDITEM_INFO,1901	,10		,40		,1		,1		,0		
+
+
+;id为2100+为其他物品
+
+
+
+
+
+

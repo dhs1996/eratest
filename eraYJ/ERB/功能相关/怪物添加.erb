@@ -1,0 +1,24 @@
+﻿;怪物加载
+;ARG为添加怪物的编号,ARG:1为数量
+@ENEMYADD,ARG,ARG:1
+FOR LOCAL,0,ARG:1
+	ADDCHARA ARG
+NEXT
+	
+
+
+
+
+
+
+
+
+
+;怪物添加简易测试
+@TEST_ENEMYSHOW
+ADDCHARA 201
+TARGET = 1
+PRINTFORML 攻击:{BASE:94}-{BASE:95}
+INPUT
+
+

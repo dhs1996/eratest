@@ -1,0 +1,21 @@
+﻿;分支选项常用与遇到触发指定剧情之后
+;比如:
+;你遇到一位摔倒的老人,你决定
+;[0]旁观
+;[1]走开
+;[2]扶一下
+
+;代码如下
+@EVENT_001
+PRINTL 你遇到一位摔倒的老人,你决定
+PRINTL [0]旁观
+PRINTL [1]走开
+PRINTL [2]扶一下
+;INPUT指令等待下一个输入
+INPUT	
+;显示出分支后,可以用"IF"或者"SELECTCASE"来判断,RESULT为INPUT记录的数值
+IF RESULT == 0
+	;接上增加角色的指令或者跳转到相关的函数
+ELSEIF RESULT == 1
+ELSE
+ENDIF

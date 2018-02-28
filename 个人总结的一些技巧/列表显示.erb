@@ -1,0 +1,128 @@
+﻿;列表常显示用于商店,物品,复数角色的显示
+;比如:
+;---------------------------
+;水果商店			售价
+;---------------------------
+;[1]苹果			1
+;[2]梨子			1
+;[3]芒果			2
+;[4]香蕉			2
+;[5]葡萄			5
+;---------------------------
+;[999]上一页 [998]下一页
+;[000]返回
+;---------------------------
+@LIST
+#DIM PAGE = 1
+;物品总数量为6
+#DIM ITEM_NUM = 6
+$REM	;GOTO跳转的目标
+PRINTL ---------------------------
+PRINTL 水果商店        售价
+PRINTL ---------------------------
+;		  第一个物品  (最后一个物品+1)
+FOR LOCAL,(PAGE-1)*5+1,PAGE*5+1
+	PRINTFORM [{LOCAL}]
+	;显示物品名
+	CALLFORM ITEM_NAME,LOCAL
+	PRINTFORM %" "*8%
+	;显示物品价格
+	PRINTFORML {ITEM(LOCAL,PRICE)}
+NEXT
+PRINTL ---------------------------
+PRINT [999]上一页    
+PRINTL [998]下一页
+PRINTL [000]返回
+PRINTL ---------------------------
+INPUT
+SELECTCASE RESULT
+	CASE 1 TO 200
+		;添加物品的函数以及减少已有MONEY的函数
+	CASE 998
+		;当处于最后一页按钮无效
+		SIF ITEM_NUM < PAGE*5+1
+			GOTO REM
+		PAGE += 1
+		GOTO REM
+	CASE 999
+		;当处于第一页按钮无效
+		SIF PAGE < 2
+			GOTO REM
+		PAGE -= 1
+		GOTO REM
+	CASE 0
+		CALL MAIN
+	CASEELSE
+ENDSELECT
+
+;显示商店之前得先扫描已储存的物品信息
+@ITEM_NAME,ID
+#DIM ID
+SELECTCASE ID
+	CASE 1
+		PRINT 苹果
+	CASE 2
+		PRINT 梨子
+	CASE 3
+		PRINT 芒果
+	CASE 4
+		PRINT 香蕉
+	CASE 5
+		PRINT 葡萄
+	CASE 6
+		PRINT 草莓
+	CASEELSE
+ENDSELECT
+
+;用一个构造函数来专门存物品信息
+;ID为物品ID,TYPE为物品的信息索引
+@ITEM(ID,TYPE)
+#FUNCTION
+#DIM ID
+#DIM TYPE
+SELECTCASE ID
+	CASE 1
+		SELECTCASE TYPE
+				;价格
+			CASE PRICE
+				RETURNF 1
+			;CASE 物品其他的属性
+			CASEELSE
+		ENDSELECT
+	CASE 2
+		SELECTCASE TYPE
+			CASE PRICE
+				RETURNF 1
+			;CASE
+			CASEELSE
+		ENDSELECT
+	CASE 3
+		SELECTCASE TYPE
+			CASE PRICE
+				RETURNF 2
+			;CASE
+			CASEELSE
+		ENDSELECT
+	CASE 4
+		SELECTCASE TYPE
+			CASE PRICE
+				RETURNF 2
+			;CASE
+			CASEELSE
+		ENDSELECT
+	CASE 5
+		SELECTCASE TYPE
+			CASE PRICE
+				RETURNF 5
+			;CASE
+			CASEELSE
+		ENDSELECT
+	CASE 6
+		SELECTCASE TYPE
+			CASE PRICE
+				RETURNF 10
+			;CASE
+			CASEELSE
+		ENDSELECT
+	CASEELSE
+ENDSELECT

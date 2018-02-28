@@ -1,0 +1,33 @@
+﻿@SYSTEM_TILE
+CALL MAIN
+@MAIN
+;1.一般的数据建个局部变量就够了
+;函数里#DIM和#DIMS
+;#DIM NUM
+;#DIMS WORD
+;NUM=10000
+;WORD=一句话
+
+;ERA里数据超过FFFFFFFF(10进制为4294967295)会溢出
+;2.如何显示一个大于4294967295的数,本人给出两种方法
+;⑴数组储存
+;比如以1000000000为界限,若数值大于等于1000000000,NUM:1+=1,NUM:0-=1000000000
+;再直接用FOR显示即可
+;⑵转化为字符串
+;用判断的方法把0-9这10个数字存进一个字符串变量里
+;比如:
+;NUM=9876
+;WORD=
+;SELECTCASE NUM/1000
+;	CASE 1
+;		WORD+=1
+;	CASE 2
+;		WORD+=2
+;	...
+;ENDSELECT
+;SELECTCASE NUM/100
+;...
+;SELECTCASE NUM/10
+;...
+;然后 PRINTFORML %WORD%
+INPUT

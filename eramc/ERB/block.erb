@@ -1,0 +1,105 @@
+﻿;---------------------------------------------------------------------
+;方块添加格式
+;---------------------------------------------------------------------
+;@BLOCKNAME_0			方块名
+;PRINT 无
+;@BLOCK_0(FIND,REV)
+;#FUNCTION
+;#DIMS FIND
+;#DIM REF REV
+;REV = 0
+;SELECTCASE FIND
+;	CASE "ID"				方块ID
+;		REV=XXXX		
+;	CASE "MAX_NUM"			最大堆叠(普通方块默认64)
+;		REV=64
+;	CASE "BREAK_LEVEL"		破坏等级
+;		REV=X
+;	CASE "BREAKED_LEVEL"	被破坏等级
+;		REV=X
+;	CASE "BREAK_SPEED"		每小时破坏数量
+;		REV=XX
+;	CASE "BUILDING_BLOCK"	是否为建筑类方块(0或1)
+;		REV=0
+;	CASE "ABLE_USE"			是否能使用
+;		REV=0
+;	CASE "SPECIAL"			特殊作用方块(默认0)
+;		REV=0
+;	CASEELSE
+;ENDSELECT
+;---------------------------------------------------------------------
+@BLOCKNAME_1
+PRINTFORM 泥土
+@BLOCK_1(FIND,REV)
+#FUNCTION
+#DIMS FIND
+#DIM REF REV
+REV = 0
+SELECTCASE FIND
+	CASE "ID"
+		REV=1
+	CASE "MAX_NUM"
+		REV=64
+	CASE "BREAK_LEVEL"
+		REV=1
+	CASE "BREAK_SPEED"
+		REV=16
+	CASE "BUILDING_BLOCK"
+		REV=1
+	CASE "ABLE_USE"	
+		REV=0
+	CASE "SPECIAL"
+		REV=0
+	CASEELSE
+ENDSELECT
+;---------------------------------------------------------------------
+@BLOCKNAME_2
+PRINTFORM 原木
+@BLOCK_2(FIND,REV)
+#FUNCTION
+#DIMS FIND
+#DIM REF REV
+REV = 0
+SELECTCASE FIND
+	CASE "ID"
+		REV=2
+	CASE "MAX_NUM"
+		REV=64
+	CASE "BREAK_LEVEL"
+		REV=1
+	CASE "BREAK_SPEED"
+		REV=6
+	CASE "BUILDING_BLOCK"
+		REV=1
+	CASE "ABLE_USE"	
+		REV=0
+	CASE "SPECIAL"
+		REV=0
+	CASEELSE
+ENDSELECT
+;---------------------------------------------------------------------
+@BLOCKNAME_3
+PRINTFORM 木板
+@BLOCK_3(FIND,REV)
+#FUNCTION
+#DIMS FIND
+#DIM REF REV
+REV = 0
+SELECTCASE FIND
+	CASE "ID"
+		REV=3
+	CASE "MAX_NUM"
+		REV=64
+	CASE "BREAK_LEVEL"
+		REV=1
+	CASE "BREAK_SPEED"
+		REV=12
+	CASE "BUILDING_BLOCK"
+		REV=1
+	CASE "ABLE_USE"	
+		REV=0
+	CASE "SPECIAL"
+		REV=0
+	CASEELSE
+ENDSELECT
+;---------------------------------------------------------------------

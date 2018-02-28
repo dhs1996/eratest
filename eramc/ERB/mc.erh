@@ -1,0 +1,39 @@
+﻿
+
+
+
+
+
+
+
+
+;#########存档内容#########
+;格式:#DIM(S) SAVEDATA 变量名
+;---------游戏难度---------
+;0和平,1简单，2普通,3困难,4地狱,5深渊,6逆天
+#DIM SAVEDATA DIFFICULTY
+;---------人物数据---------
+;人物名字
+#DIMS SAVEDATA PLAYER_NAME
+;人物性别
+#DIMS SAVEDATA SEX
+;人物等级
+#DIM SAVEDATA LEVEL
+;---------物品数据---------
+;装备栏记录(三个参数:0ID,1耐久,2附魔)
+#DIM SAVEDATA HEAD,3
+#DIM SAVEDATA BODY,3
+#DIM SAVEDATA LEAG,3
+#DIM SAVEDATA FOOT,3
+;背包记录(PACK:0=ID,PACK:1=NUM)
+#DIM SAVEDATA PACK,200,2
+#DIM SAVEDATA PACK_UNLOCK
+;---------其他数据---------
+;地点记录
+#DIM SAVEDATA LAST_PLACE
+;0ID,1清理度,2
+#DIM SAVEDATA ZOON,5
+;时间记录
+#DIM SAVEDATA TIME_PLAY,4
+;每页显示数
+#DIM SAVEDATA PAGE_NUM

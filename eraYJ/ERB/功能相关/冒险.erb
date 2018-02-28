@@ -1,0 +1,66 @@
+﻿;探索读条
+@MXSHOW_DT,ARG,ARGS
+#DIM RARE = 1
+#DIM JS   = 0
+#DIMS A1  = "◆"
+#DIMS A2  = "◇"
+#DIMS S_1 = "¤"
+
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+PRINTL  
+ALIGNMENT CENTER
+FOR RARE,0,101,4
+CALL MBATTLE	;概率遇敌
+PRINTFORML 当前探索位置:%MAPNAME:ARG%
+PRINTFORML %S_1*28%
+PRINTFORM %S_1% %A1*JS%%A2*(25-JS)%
+JS += 1
+PRINT  
+PRINTFORML %S_1%
+PRINTFORML %S_1*28%
+PRINTFORML %S_1%                                                    %S_1%
+PRINTFORML %S_1%                                                    %S_1%
+PRINTFORML %S_1%                     \@FLAG:1 == 0?探索中~~~~#遭遇怪物!!\@                     %S_1%
+PRINTFORML %S_1%                                                    %S_1%
+PRINTFORML %S_1%                                                    %S_1%
+PRINTFORML %S_1*28%
+
+
+TWAIT 40,1
+IF JS == 26
+	FLAG:203 = 1
+ELSE
+	FLAG:203 = 0
+ENDIF
+TWAIT 40,1
+IF FLAG:1 == 1
+	CALL BATTLE
+ELSE
+ENDIF
+CLEARLINE 10
+NEXT
+
+JS = 0
+ALIGNMENT LEFT
+CALL MXSHOW_MAIN
+
+;探索
+;@MXSHOW_TS
+
+
+
+
+
+
+
+

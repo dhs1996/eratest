@@ -1,0 +1,62 @@
+﻿
+;#########地图相关#########
+;地图编号,王城:0
+#DIM MAP_ID
+#DIMS B0 ="■"
+#DIMS B9 ="%"
+#DIMS H0 ="|"
+#DIMS D0 ="#"
+#DIMS SEX_1 ="♂"
+#DIMS SEX_2 ="♀"
+#DIMS MAP_USE001 = "∷"
+
+
+
+
+#DIM LIST_E,201
+
+
+
+
+;#########存档内容#########
+
+;游戏天数记录
+#DIM SAVEDATA DAY_PLAY
+;当前所在地图记录
+#DIMS SAVEDATA MAPNAME,100
+
+
+
+
+;装备属性的名字记录
+#DIMS SAVEDATA ISTR,100
+
+;存档额外内容的格式:#DIMS SAVEDATA
+;1.物品栏存储
+#DIM SAVEDATA ITEM_ID,2000		;物品ID
+#DIMS SAVEDATA ITEM_NAME,2000	;物品名
+#DIM SAVEDATA ITEM_PRICE,2000	;物品价格
+;						
+#DIM SAVEDATA ITEM_INFO,2000,30	;物品属性
+;	  			物品栏:格子,参数1,1以上为PACK_ID，0为物品总数量,参数2为:1.编号2.数量
+#DIM SAVEDATA ITEM_OWN,201,3	;玩家背包
+;	  物品栏:ID,0,0为目前已用，1~+为物品栏数量
+#DIM SAVEDATA PACK_ID
+;#DIM SAVEDATA 
+
+;人物信息储存
+#DIM SAVEDATA ABLNUM
+
+
+
+
+;#########怪物相关#########
+
+
+
+
+;#########游戏选项#########
+;1.经验倍率:100%（默认100%）
+#DIM EXP_MUL = 1
+;2.等级高于怪物时经验惩罚:每级10%（默认10%）
+#DIM EXP_FINE = 10
